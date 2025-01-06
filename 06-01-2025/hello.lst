@@ -1,0 +1,51 @@
+     1                                  section .data
+     2 00000000 456E74657220596F75-     	msg1 db "Enter Your Name:",20H
+     2 00000009 72204E616D653A20   
+     3                                  	msg1len equ $-msg1
+     4 00000011 596F7572204E616D65-     	msg2 db "Your Name:",10
+     4 0000001A 3A0A               
+     5                                  	msg2len equ $-msg2
+     6                                  
+     7                                  section .bss
+     8 00000000 <res 00000014>          	nm resb 20
+     9 00000014 <res 00000001>          	len resb 1
+    10                                  
+    11                                  section .code
+    12                                  	global _start
+    13                                  	_start:
+    14 00000000 B801000000              		mov rax,1
+    15 00000005 BF01000000              		mov rdi,1
+    16 0000000A 48BE-                   		mov rsi,msg1
+    16 0000000C [0000000000000000] 
+    17 00000014 BA11000000              		mov rdx,msg1len
+    18 00000019 0F05                    		syscall
+    19                                  		
+    20                                  		
+    21 0000001B B800000000              		mov rax,0
+    22 00000020 BF00000000              		mov rdi,0
+    23 00000025 48BE-                   		mov rsi,nm
+    23 00000027 [0000000000000000] 
+    24 0000002F BA14000000              		mov rdx,20
+    25 00000034 0F05                    		syscall
+    26                                  		
+    27 00000036 48890425[14000000]      		mov [len],rax
+    28                                  		
+    29                                  		
+    30 0000003E B801000000              		mov rax,1
+    31 00000043 BF01000000              		mov rdi,1
+    32 00000048 48BE-                   		mov rsi,msg2
+    32 0000004A [1100000000000000] 
+    33 00000052 BA0B000000              		mov rdx,msg2len
+    34 00000057 0F05                    		syscall
+    35                                  		
+    36 00000059 B801000000              		mov rax,1
+    37 0000005E BF01000000              		mov rdi,1
+    38 00000063 48BE-                   		mov rsi,nm
+    38 00000065 [0000000000000000] 
+    39 0000006D 488B1425[14000000]      		mov rdx, [len]
+    40 00000075 0F05                    		syscall
+    41                                  		
+    42                                  		
+    43 00000077 B83C000000              		mov rax,60
+    44 0000007C BF00000000              		mov rdi,0
+    45 00000081 0F05                    		syscall
