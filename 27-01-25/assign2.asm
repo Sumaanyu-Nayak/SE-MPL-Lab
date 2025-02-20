@@ -11,6 +11,8 @@
 	syscall
 %endmacro
 section .data
+    msg5 db "write an X86/64 ALP to accept a string and to display its length", 10, 'Name:-Sumaanyu', 10, 'roll:-7256 ', 10 ,'Date Of Performance:-20/01/2025',10
+    msg5len equ $-msg5
 	msg1 db "Enter some string:",20H
 	msg1len equ $-msg1
 	msg2 db "The length is: ", 20H
@@ -27,9 +29,11 @@ section .bss
 	len2 resb 1
     lenca resb 2
 
-section .code
+; section .code
+section .text
 	global _start
 	_start:
+        io 1,1,msg5,msg5len
 		io 1,1,msg1,msg1len
         io 0,0,strna,20
 

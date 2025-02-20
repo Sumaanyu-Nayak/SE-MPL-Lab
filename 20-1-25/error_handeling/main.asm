@@ -11,7 +11,7 @@
 	syscall
 %endmacro
 section .data
-	msg1 db "Write an x86/64 ALP to accept 5 hexadecimal numbers from user and store them in an array and display the accepted numbers",10
+	msg1 db "Write an x86/64 ALP to accept 5 hexadecimal numbers from user and store them in an array and display the accepted numbers",10, "Name:- Soyal T.K",10,"Roll:- 7254",10,"Date of Performance:- 20/01/2025",10
 	msg1len equ $-msg1
 	msg2 db "Enter 5 64bit hexadecimal numbers (0-9,A-F only): ", 10
 	msg2len equ $-msg2
@@ -25,7 +25,7 @@ section .bss
 	asciinum resb 17
 	hexnum resq 5
 
-section .code
+section .text
 	global _start
 	_start:
         io 1,1,msg1,msg1len
