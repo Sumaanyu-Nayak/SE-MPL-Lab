@@ -18,6 +18,8 @@
 %endmacro
 
 section .data
+	dispMsg db "Write X86/64 ALP to perform overlapped block transfer with string specific instructions Block containing data can be defined in the data segment.",10, "Name:- Sumaanyu",10,"Roll:- 7256",10,"Date of Performance:- 24/03/2025",10
+	dispMsgLen equ $-dispMsg
 	msg db "------------------MENU------------------", 10
 	    db "	1. Without string instruction ", 10
 	    db "	2. With string instruction ", 10
@@ -43,6 +45,7 @@ section .bss
 section .text
 	global _start
 _start :
+	write dispMsg, dispMsgLen
 	main_menu :
 		write msg, msglen
 		read choice, 2
@@ -132,45 +135,37 @@ _start :
 displayBlock :
 	mov rcx, 5
 	mov rsi, src 
-	mov rdi, dest
 	
 	
 	nextD :
 		push rcx
 		push rsi
-		push rdi
 		
 		mov rbx, [rsi]
 		call display
 		write tab, 1
 		
 		pop rax
-		mov rbx, [rax]
+		mov rbx, rax
 		push rax
 		call display
 		write endl, 1
 		
-		pop rdi
 		pop rsi
 		pop rcx
-		
-		add rdi, 8
+
 		add rsi, 8
-		
-		
 		
 		loop nextD
 	write endl, 1
 	mov rcx, 5
-	mov rsi, src 
 	mov rdi, dest
 	
 	nextA :
 		push rcx
-		push rsi
 		push rdi
 		
-		mov rbx, rsi
+		mov rbx, [rdi]
 		call display
 		write tab, 1
 		
@@ -181,14 +176,13 @@ displayBlock :
 		write endl, 1
 		
 		pop rdi
-		pop rsi
 		pop rcx
 		
 		add rdi, 8
-		add rsi, 8
 		
 		loop nextA
 	ret
+		
 		
 
 display :

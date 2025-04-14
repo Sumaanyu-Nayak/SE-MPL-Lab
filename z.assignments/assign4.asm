@@ -15,6 +15,8 @@
 %endmacro
 
 section .data
+	dispMsg db "Write an X86/64 ALP to count number of positive and negative numbers from the array",10, "Name:- Sumaanyu",10,"Roll:- 7256",10,"Date of Performance:- 17/03/2025",10
+	dispMsglen equ $-dispMsg
 	msg1 db "Number : "
 	msg1len equ $-msg1
 	endl db 10
@@ -31,6 +33,7 @@ section .bss
 section .text
 	global _start
 _start :
+	write dispMsg, dispMsglen
 	mov rcx, 5
 	mov rsi, hexnum
 	nextnum :

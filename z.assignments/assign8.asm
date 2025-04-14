@@ -18,6 +18,8 @@
 %endmacro
 
 section .data
+	dispMsg db "Write X86/64 ALP to perform multiplication of two 8-bit hexadecimal numbers. Use successive addition and add and shift method. (Use of 64-bit registers is expected).",10, "Name:- Sumaanyu",10,"Roll:- 7256",10,"Date of Performance:- 03/04/2025",10
+	dispMsgLen equ $-dispMsg
 	msg db "------------------MENU------------------", 10
 	    db "	1. Successive Addition ", 10
 	    db "	2. Add and Shift ", 10
@@ -40,7 +42,9 @@ section .bss
 section .text
 	global _start
 _start :
+	write dispMsg, dispMsgLen
 	main_menu :
+		
 		write msg, msglen
 		read choice, 2
 		

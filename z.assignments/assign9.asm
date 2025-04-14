@@ -3,6 +3,8 @@
 %include "macro.asm"
 
 section .data
+	dispMsg db "Write X86 menu driven Assembly Language Program (ALP) to implement OS (DOS) commands TYPE, COPY and DELETE using file operations. User is supposed to provide command line arguments in all cases.",10, "Name:- Sumaanyu",10,"Roll:- 7256",10,"Date of Performance:- 07/04/2025",10
+	dispMsglen equ $-dispMsg
 	msg db "------------------MENU------------------", 10
 	    db "	1. TYPE ", 10
 	    db "	2. COPY ", 10
@@ -31,6 +33,7 @@ section .text
 _start :
 	pop rbx ; number of arguments 
 	pop rsi ; executable program name
+	write dispMsg, dispMsglen
 	
 	mov rdi, fname1
 	mark :
@@ -105,6 +108,7 @@ type :
 	write fname1, 50
 	write endl, 1
 	write buffer, bufferlen
+	write endl, 1
 	
 	fclose fname1 
 	ret
@@ -122,8 +126,7 @@ copy :
 	je case4
 	mov [filehandle1], rax
 	
-	fread [filehandle1], buffer, 100
-	dec rax
+	fread [filehandle1], buffer, 1000
 	mov [bufferlen], rax
 
 	fcreate fname2
