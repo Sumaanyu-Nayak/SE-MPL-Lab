@@ -3,7 +3,7 @@
 %include "macro.asm"
 
 section .data
-	dispMsg db "Write X86 menu driven Assembly Language Program (ALP) to implement OS (DOS) commands TYPE, COPY and DELETE using file operations. User is supposed to provide command line arguments in all cases.",10, "Name:- Sumaanyu",10,"Roll:- 7256",10,"Date of Performance:- 07/04/2025",10
+	dispMsg db "Write X86 menu driven Assembly Language Program (ALP) to implement OS (DOS) commands TYPE, COPY and DELETE using file operations. User is supposed to provide command line arguments in all cases.",10, "Name:- Sumaanyu",10,"Roll:- 7256",10,"Date of Performance:- 17/04/2025",10
 	dispMsglen equ $-dispMsg
 	msg db "------------------MENU------------------", 10
 	    db "	1. TYPE ", 10
